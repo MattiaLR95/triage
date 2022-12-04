@@ -10,9 +10,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ruolo")
 public class Ruolo {
-	
+
 	public static final String ROLE_ADMIN = "ROLE_ADMIN";
-	public static final String ROLE_CLASSIC_USER = "ROLE_CLASSIC_USER";
+	public static final String ROLE_SUB_OPERATOR = "ROLE_SUB_OPERATOR";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Ruolo {
 
 	public Ruolo() {
 	}
-	
+
 	public Ruolo(Long id) {
 		this.id = id;
 	}

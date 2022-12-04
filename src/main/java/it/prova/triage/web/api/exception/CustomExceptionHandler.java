@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -71,6 +72,41 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(PazienteNotInVisitaException.class)
 	public ResponseEntity<Object> handlePazienteNotInVisitaException(PazienteNotInVisitaException ex,
+			WebRequest request) {
+
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp", LocalDateTime.now());
+		body.put("message", ex.getMessage());
+		body.put("status", HttpStatus.BAD_REQUEST);
+
+		return new ResponseEntity<>(body, HttpStatus.UNPROCESSABLE_ENTITY);
+	}
+
+	@ExceptionHandler(PazienteNonDimessoException.class)
+	public ResponseEntity<Object> handlePazienteNonDimessoException(PazienteNonDimessoException ex,
+			WebRequest request) {
+
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp", LocalDateTime.now());
+		body.put("message", ex.getMessage());
+		body.put("status", HttpStatus.BAD_REQUEST);
+
+		return new ResponseEntity<>(body, HttpStatus.UNPROCESSABLE_ENTITY);
+	}
+
+	@ExceptionHandler(IdNullUpdateException.class)
+	public ResponseEntity<Object> handleIdNullUpdateException(IdNullUpdateException ex, WebRequest request) {
+
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp", LocalDateTime.now());
+		body.put("message", ex.getMessage());
+		body.put("status", HttpStatus.BAD_REQUEST);
+
+		return new ResponseEntity<>(body, HttpStatus.UNPROCESSABLE_ENTITY);
+	}
+
+	@ExceptionHandler(DottoreNonDisponibileException.class)
+	public ResponseEntity<Object> handleDottoreNonDisponibileException(DottoreNonDisponibileException ex,
 			WebRequest request) {
 
 		Map<String, Object> body = new LinkedHashMap<>();
