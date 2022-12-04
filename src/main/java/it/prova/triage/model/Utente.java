@@ -61,6 +61,15 @@ public class Utente {
 		this.dateCreated = dateCreated;
 	}
 
+	public Utente(Long id, String username, String nome, String cognome, String email) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+	}
+
 	public Utente(Long id, String username, String password, String nome, String cognome, String email,
 			Date dateCreated, StatoUtente stato) {
 		this(username, password, nome, cognome, dateCreated);
